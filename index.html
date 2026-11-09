@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>totev.kolyo | ktoist.free.bg</title>
+        <link rel="icon" type="image/x-icon" href="icon.png">
+
+        <link rel="stylesheet" href="design.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <span>ktoist.free.bg</span>
+
+                <span class="clock">
+                    IN MY TIME ZONE IT'S
+                    <span id="finland-time">--:--:--</span>
+                </span>
+            </header>
+
+            <main>
+                <p>Welcome to KTo's portal</p>
+
+                <div class="subtitle">
+                    <p style="text-align: left;">Terminal with cool commands (/help)</p>
+                    <div class="terminal" id="terminal">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">root@kto:~$</span>
+
+                            <input
+                                type="text"
+                                class="terminal-input"
+                                id="terminal-input"
+                                autocomplete="off"
+                                spellcheck="false"
+                                autofocus
+                                aria-label="Terminal input"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <p>fun fact, you can drag and drop this window. Try it</p>
+
+                <div class="image-window" id="image-window">
+                    <div class="image-titlebar" id="image-titlebar">
+                        <span>>ktotest.png</span>
+
+                        <div class="xp-window-buttons">
+                            <button title="Minimize">_</button>
+                            <button title="Maximize">в–Ў</button>
+                            <button title="Close">Г—</button>
+                        </div>
+                    </div>
+
+                    <div class="image-window-content">
+                        <img src="ktotest.png" alt="KTo image">
+                    </div>
+
+                    <div class="image-window-status">
+                        само го вижте този идиот
+                    </div>
+                </div>
+
+                <section>
+                    <h2>>my identity</h2>
+
+                    <p>
+                        Hei, I'm <b>Kolyo/Кольо</b> but people on the internet call me
+                        <b>KTo</b>. I am from Bulgaria, but currently roam in Finland.
+                        I'm a programmer and digital artist, I like cats, I like post
+                        punk and some other cool shit. This website is stil in development
+                        and I will probably post more about it on my instagram, but please
+                        DM if you have any feedback or suggestions how to make it cooler,
+                        thank you :>
+                    </p>
+                </section>
+
+                <section>
+                    <p>
+                        if anyone is interested in my code for this website, I will post
+                        it once it's done on GitHub
+                    </p>
+                </section>
+
+<div class="image-window" id="china-window">
+
+    <div class="image-titlebar" id="china-titlebar">
+        <span>>china.png</span>
+
+        <div class="xp-window-buttons">
+            <button title="Minimize">_</button>
+            <button title="Maximize">&#9633;</button>
+            <button title="Close">&#215;</button>
+        </div>
+    </div>
+
+    <div class="image-window-content">
+        <img src="china.png" alt="China image">
+    </div>
+
+    <div class="image-window-status">
+        you met me at a very Chinese time of my life
+    </div>
+
+</div>
+
+                <section class="music-section">
+                    <h2>>My shit music taste</h2>
+<p>you can change playlist using the File button</p>
+
+                    <div class="xp-player">
+                        <div class="xp-titlebar">
+                            <span>>музикален терминал</span>
+
+                            <div class="xp-window-buttons">
+                                <button id="minimize-button" title="Minimize">_</button>
+                                <button id="maximize-button" title="Maximize">в–Ў</button>
+                                <button id="close-button" title="Close">Г—</button>
+                            </div>
+                        </div>
+
+                        <div class="xp-menubar">
+                            <div class="menu-container">
+                                <button class="xp-menu-button" id="file-button">
+                                    File
+                                </button>
+
+                                <div class="xp-dropdown" id="playlist-menu">
+                                    <button class="playlist-option" data-playlist="0">
+                                        01. Нещастник
+                                    </button>
+
+                                    <button class="playlist-option" data-playlist="1">
+                                        02. Носталгия
+                                    </button>
+
+                                    <button class="playlist-option" data-playlist="2">
+                                        03. Tomorrow is just another day
+                                    </button>
+
+                                    <button class="playlist-option" data-playlist="3">
+                                        04. Computer Nerd
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button class="xp-menu-button" id="save-button">
+                                Save
+                            </button>
+                        </div>
+
+                        <div class="xp-playlist">
+                            <div class="xp-playlist-header">
+                                <span id="playlist-name">Computer Nerd</span>
+                            </div>
+
+                            <iframe
+                                id="spotify-player"
+                                src="https://open.spotify.com/playlist/54OQzRcZYvWhj465xluSZy?theme=0"
+                                width="100%"
+                                height="352"
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"
+                            ></iframe>
+                        </div>
+
+
+                        <div class="xp-bottom">
+                            <span>supported by Spotify</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>>socials</h2>
+
+                    <a
+                        class="social"
+                        href="https://www.instagram.com/totev.kolyo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        @totev.kolyo в†—
+                    </a>
+                </section>
+            </main>
+
+            <footer>
+                There is no such thing as a virgin. Life fucks us all
+            </footer>
+        </div>
+
+        <script src="clock.js"></script>
+        <script src="player.js"></script>
+        <script src="terminal.js"></script>
+        <script src="window.js"></script>
+    </body>
+</html>
