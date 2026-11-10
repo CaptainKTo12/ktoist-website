@@ -55,6 +55,27 @@ function runCommand(command) {
             terminal.style.setProperty("--terminal-color", argument);
             showOutput("Terminal color changed to " + argument);
             break;
+            case "/minecraft": {
+
+    const minecraftWindow = document.getElementById("minecraft-window");
+    const minecraftFrame = document.getElementById("minecraft-iframe");
+
+    if (!minecraftWindow || !minecraftFrame) {
+        showOutput("ERROR: Minecraft window not found.");
+        break;
+    }
+
+    minecraftWindow.style.display = "block";
+    minecraftWindow.style.zIndex = ++highestWindow;
+
+    if (!minecraftFrame.src || minecraftFrame.src === "about:blank") {
+        minecraftFrame.src = minecraftFrame.dataset.src;
+    }
+
+    showOutput("Launching Minecraft Classic...");
+
+    break;
+}
 
         case "/help":
             showOutput(
@@ -63,7 +84,7 @@ function runCommand(command) {
 /clear                  Clear terminal history
 /changecolor #hex       Change terminal text color
 /generate a catboy      Generate a catboy
-/doom                   Launch DOOM
+/minecraft              Play Minecraft
 /help                   Display this command list`
             );
             break;
@@ -149,6 +170,23 @@ terminal.addEventListener("keydown", function(event) {
         createNewPrompt();
     }
 });
+
+const firstInput = terminal.querySelector(".terminal-input");
+
+if (firstInput) {
+    firstInput.focus();
+}
+
+function closeMinecraft() {
+
+    const minecraftWindow = document.getElementById("minecraft-window");
+    const minecraftFrame = document.getElementById("minecraft-iframe");
+
+    minecraftWindow.style.display = "none";
+
+    // Stop Minecraft completely
+    minecraftFrame.src = "about:blank";
+}
 
 const firstInput = terminal.querySelector(".terminal-input");
 
