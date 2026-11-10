@@ -624,3 +624,219 @@ footer {
     margin-top: 15px;
     max-width: 420px;
 }
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 10px;
+    margin-bottom: 35px;
+    padding: 8px;
+
+    border: 1px solid #164b80;
+    background: #000;
+
+    box-shadow: 0 0 15px #0875bb12;
+}
+
+.nav-link {
+    display: inline-block;
+
+    padding: 9px 18px;
+
+    color: #60c5ff;
+    background: transparent;
+
+    border: 1px solid transparent;
+
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    background: #103759;
+
+    border: 1px solid #247ab5;
+
+    box-shadow: 0 0 12px #168bff66;
+}
+.nav-link.active {
+    color: #ffffff;
+    background: #071a2b;
+
+    border: 1px solid #247ab5;
+
+    text-shadow: 0 0 8px #168bff;
+}
+@media (max-width: 600px) {
+    .navbar {
+        gap: 5px;
+        padding: 6px;
+        margin-bottom: 25px;
+    }
+
+    .nav-link {
+        flex: 1;
+        text-align: center;
+
+        padding: 11px 8px;
+        font-size: 11px;
+    }
+}
+.site-search {
+    position: relative;
+    width: 100%;
+    margin-top: -20px;
+    margin-bottom: 35px;
+    z-index: 500;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px;
+
+    background: #03080e;
+    border: 1px solid #164b80;
+
+    box-shadow: 0 0 12px #0875bb18;
+}
+
+.search-prompt {
+    color: #45baff;
+    font-weight: bold;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: #b8d9f0;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+}
+
+.search-box input::placeholder {
+    color: #426887;
+}
+
+.search-shortcut {
+    color: #478bbd;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.search-results {
+    display: none;
+
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+
+    max-height: 380px;
+    overflow-y: auto;
+
+    background: #03080e;
+    border: 1px solid #164b80;
+
+    box-shadow: 0 5px 18px #000b;
+
+    z-index: 1000;
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-result {
+    display: block;
+    padding: 12px;
+
+    color: #b8d9f0;
+    text-decoration: none;
+
+    border-bottom: 1px solid #164b8055;
+
+    transition: 0.2s;
+}
+
+.search-result:hover {
+    background: #103759;
+}
+
+.search-result-title {
+    color: #60c5ff;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.search-result-preview {
+    color: #7198b5;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.search-highlight {
+    color: #ffffff;
+    background: #0756bc;
+    font-weight: bold;
+    padding: 1px 2px;
+}
+
+.search-empty {
+    padding: 15px;
+    color: #478bbd;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .site-search {
+        margin-top: -12px;
+        margin-bottom: 25px;
+    }
+
+    .search-box {
+        padding: 10px;
+        gap: 7px;
+    }
+
+    .search-box input {
+        font-size: 12px;
+    }
+
+    .search-results {
+        max-height: 300px;
+    }
+}
+.minecraft-content {
+    width: 100%;
+    height: 480px;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+}
+
+.minecraft-content iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 600px) {
+    .minecraft-content {
+        height: 350px;
+    }
+}
