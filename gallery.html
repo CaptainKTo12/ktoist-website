@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>art gallery | ktoist.free.bg</title>
+
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="gallery.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <span>ktoist.free.bg</span>
+
+        <span class="clock">
+            IN MY TIME ZONE IT'S
+            <span id="finland-time">--:--:--</span>
+        </span>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-link">> HOME</a>
+        <a href="blog.html" class="nav-link">> BLOG</a>
+        <a href="gallery.html" class="nav-link active">> ART</a>
+    </nav>
+
+
+<div class="site-search">
+
+    <div class="search-box">
+        <span class="search-prompt">&gt;</span>
+
+        <input
+            type="text"
+            id="site-search-input"
+            placeholder="Search for keywords"
+            autocomplete="off"
+            spellcheck="false"
+        >
+
+    </div>
+
+    <div id="search-results" class="search-results"></div>
+
+</div>
+
+
+    <main>
+
+        <p class="gallery-description">
+            A collection of my drawings and digital art.
+            Feel free to move the windows around.
+            Welcome to my little art archive :>
+        </p>
+
+        <div class="gallery-info">
+            <span>21 FILES FOUND</span>
+            <span>ART DIRECTORY: /art/</span>
+        </div>
+
+        <div id="gallery-stage"></div>
+
+    </main>
+
+    <footer>
+        There is no such thing as a virgin. Life fucks us all
+        <br><br>
+        <img src="nya.gif" alt="nyaneko"
+             style="width:48px;height:48px;">
+    </footer>
+
+</div>
+
+<script src="clock.js"></script>
+<script src="gallery.js"></script>
+<script src="search.js"></script>
+
+</body>
+</html>
