@@ -1,77 +1,79 @@
-const imageWindow = document.getElementById("image-window");
-const imageTitlebar = document.getElementById("image-titlebar");
+function makeDraggable(windowId, titlebarId) {
 
-let dragging = false;
+    const imageWindow = document.getElementById(windowId);
+    const imageTitlebar = document.getElementById(titlebarId);
 
-let startX = 0;
-let startY = 0;
+    let dragging = false;
 
-let windowX = 0;
-let windowY = 0;
+    let startX = 0;
+    let startY = 0;
 
-
-imageTitlebar.addEventListener("pointerdown", function(event) {
-
-    if (event.button !== 0) return;
-
-    dragging = true;
-
-    startX = event.clientX;
-    startY = event.clientY;
-
-    imageTitlebar.setPointerCapture(event.pointerId);
-
-    imageTitlebar.style.cursor = "grabbing";
-
-});
+    let windowX = 0;
+    let windowY = 0;
 
 
-imageTitlebar.addEventListener("pointermove", function(event) {
+    imageTitlebar.addEventListener("pointerdown", function(event) {
 
-    if (!dragging) return;
+        if (event.button !== 0) return;
 
-    const moveX = event.clientX - startX;
-    const moveY = event.clientY - startY;
+        // Ignore clicks on window buttons
+        if (event.target.closest("button")) return;
 
-    imageWindow.style.transform =
-        `translate(${windowX + moveX}px, ${windowY + moveY}px)`;
+        dragging = true;
 
-});
+        startX = event.clientX;
+        startY = event.clientY;
+
+        imageTitlebar.setPointerCapture(event.pointerId);
+
+        imageTitlebar.style.cursor = "grabbing";
+
+        imageWindow.style.zIndex = ++highestWindow;
+
+    });
+
+
+    imageTitlebar.addEventListener("pointermove", function(event) {
+
+        if (!dragging) return;
+
+        const moveX = event.clientX - startX;
+        const moveY = event.clientY - startY;
+
+        imageWindow.style.transform =
+            `translate(${windowX + moveX}px, ${windowY + moveY}px)`;
+
+    });
 
 
 
-function stopDragging() {
+    function stopDragging() {
 
-    if (!dragging) return;
+        if (!dragging) return;
 
-    dragging = false;
+        dragging = false;
 
-    const matrix = new DOMMatrix(
-        getComputedStyle(imageWindow).transform
-    );
+        const matrix = new DOMMatrix(
+            getComputedStyle(imageWindow).transform
+        );
 
-    windowX = matrix.m41;
-    windowY = matrix.m42;
+        windowX = matrix.m41;
+        windowY = matrix.m42;
 
-    imageTitlebar.style.cursor = "grab";
+        imageTitlebar.style.cursor = "grab";
 
-}
-function openDoomWindow() {
-    const doomWindow = document.getElementById("doom-window");
-    const doomFrame = document.getElementById("doom-frame");
-
-    if (!doomWindow || !doomFrame) {
-        console.error("DOOM window elements not found!");
-        return;
     }
 
-    doomWindow.classList.add("open");
-    doomWindow.style.zIndex = ++highestWindow;
+    imageTitlebar.addEventListener("pointerup", stopDragging);
+    imageTitlebar.addEventListener("pointercancel", stopDragging);
 
-    if (doomFrame.src === "about:blank") {
-        doomFrame.src = "YOUR_WORKING_DOOM_EMBED_URL";
-    }
 }
 
-imageTitlebar.addEventListener("pointerup", stopDragging);
-imageTitlebar.addEventListener("pointercancel", stopDragging);
+
+
+let highestWindow = 10;
+
+
+makeDraggable("image-window", "image-titlebar");
+makeDraggable("china-window", "china-titlebar");
+makeDraggable("minecraft-window", "minecraft-titlebar");
