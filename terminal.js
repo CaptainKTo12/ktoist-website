@@ -1,12 +1,5 @@
-
-// ============================================
-// KTO PERSONAL TERMINAL
-// COMMAND SYSTEM
-// ============================================
-
 const terminal = document.getElementById("terminal");
 
-// CREATE NEW PROMPT
 function createNewPrompt() {
     const newLine = document.createElement("div");
     newLine.className = "terminal-line";
@@ -29,7 +22,6 @@ function createNewPrompt() {
     input.focus();
 }
 
-// SHOW TERMINAL OUTPUT
 function showOutput(message) {
     const output = document.createElement("div");
     output.className = "terminal-output";
@@ -37,7 +29,6 @@ function showOutput(message) {
     terminal.appendChild(output);
 }
 
-// COMMAND HANDLER
 function runCommand(command) {
     const parts = command.trim().split(/\s+/);
     const action = parts[0].toLowerCase();
@@ -45,13 +36,11 @@ function runCommand(command) {
 
     switch (action) {
 
-        // CLEAR TERMINAL
         case "/clear":
             terminal.innerHTML = "";
             createNewPrompt();
             break;
 
-        // CHANGE TERMINAL COLOR
         case "/changecolor":
             if (!argument) {
                 showOutput("Usage: /changecolor #hexcode");
@@ -67,7 +56,6 @@ function runCommand(command) {
             showOutput("Terminal color changed to " + argument);
             break;
 
-        // HELP COMMAND
         case "/help":
             showOutput(
 `AVAILABLE COMMANDS:
@@ -80,7 +68,6 @@ function runCommand(command) {
             );
             break;
 
-        // GENERATE A CATBOY
         case "/generate":
             if (parts.slice(1).join(" ").toLowerCase() === "a catboy") {
                 showOutput(`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀
@@ -108,7 +95,6 @@ function runCommand(command) {
             }
             break;
 
-        // LAUNCH DOOM
         case "/doom": {
     const doomWindow = document.getElementById("doom-window");
 
@@ -129,14 +115,11 @@ function runCommand(command) {
     showOutput("DOOM.EXE launched in a new tab.");
     break;
 }
-        // RANDOM TEXT
         default:
-            // Random text is allowed. No error message.
             break;
     }
 }
 
-// HANDLE ENTER KEY
 terminal.addEventListener("keydown", function(event) {
     if (event.key !== "Enter") return;
 
@@ -148,30 +131,25 @@ terminal.addEventListener("keydown", function(event) {
 
     const command = input.value.trim();
 
-    // EMPTY INPUT
     if (!command) {
         input.closest(".terminal-line").remove();
         createNewPrompt();
         return;
     }
 
-    // PRESERVE TYPED TEXT
     const typedCommand = document.createElement("span");
     typedCommand.className = "terminal-command";
     typedCommand.textContent = command;
 
     input.replaceWith(typedCommand);
 
-    // EXECUTE COMMAND
     runCommand(command);
 
-    // CREATE NEXT PROMPT
     if (command.toLowerCase() !== "/clear") {
         createNewPrompt();
     }
 });
 
-// INITIALIZE TERMINAL
 const firstInput = terminal.querySelector(".terminal-input");
 
 if (firstInput) {
